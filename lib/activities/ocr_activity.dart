@@ -14,8 +14,7 @@ class _OcrScreenState extends State<OcrScreen> {
   bool _isProcessed = false;
 
   Future<void> _pickImage() async {
-    final pickedFile =
-    await ImagePicker().pickImage(source: ImageSource.gallery);
+    final pickedFile = await ImagePicker().pickImage(source: ImageSource.gallery);
 
     if (pickedFile != null) {
       setState(() {
@@ -51,11 +50,8 @@ class _OcrScreenState extends State<OcrScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Title text changes
             Text(
-              _isProcessing
-                  ? 'TDA'
-                  : (_isProcessed ? 'Result' : 'Import or upload image'),
+              _isProcessing ? 'TDA' : (_isProcessed ? 'Result' : 'Import or upload image'),
               style: TextStyle(
                 fontSize: 24,
                 color: Colors.white,
@@ -64,9 +60,7 @@ class _OcrScreenState extends State<OcrScreen> {
             ),
             const SizedBox(height: 20),
             GestureDetector(
-              onTap: _isImagePicked && !_isProcessing
-                  ? null
-                  : _pickImage,
+              onTap: !_isProcessing ? _pickImage : null,
               child: Container(
                 width: 250,
                 height: 300,
@@ -78,7 +72,6 @@ class _OcrScreenState extends State<OcrScreen> {
               ),
             ),
             const SizedBox(height: 20),
-            // Footer text
             if (_isProcessed)
               Text(
                 'Image uploaded and processed',
@@ -102,7 +95,6 @@ class _OcrScreenState extends State<OcrScreen> {
 
   Widget _buildContent() {
     if (!_isImagePicked) {
-      // Initial state
       return Center(
         child: Text(
           'Tap to upload image',
@@ -111,33 +103,30 @@ class _OcrScreenState extends State<OcrScreen> {
       );
     }
     if (_isProcessing) {
-      // Processing state
-      return Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      // Overlay progress on a processing image
+      return Stack(
+        alignment: Alignment.center,
         children: [
-          Expanded(
-            child: Center(
-              child: CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-              ),
-            ),
-          ),
           Image.asset(
             'assets/processing.png',
-            height: 100,
-            fit: BoxFit.contain,
+            width: 250,
+            height: 300,
+            fit: BoxFit.cover,
+          ),
+          CircularProgressIndicator(
+            valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
           ),
         ],
       );
     }
     if (_isProcessed) {
-      // Processed state: show final static image
       return Image.asset(
         'assets/detected_text.png',
+        width: 250,
+        height: 300,
         fit: BoxFit.cover,
       );
     }
-    // Fallback
-    return Container();
+    return SizedBox.shrink();
   }
 }
