@@ -13,10 +13,10 @@ class TextExtractorScreen extends StatelessWidget {
               child: Column(
                 children: [
                   // Left Side Text
-                  Expanded(
+                  const Expanded(
                     flex: 4,
                     child: Padding(
-                      padding: const EdgeInsets.only(left: 20, top: 80),
+                      padding: EdgeInsets.only(left: 20, top: 80),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -45,11 +45,26 @@ class TextExtractorScreen extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      _navButton('Text Detect'),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/text_extract');
+                        },
+                        child: Text('Text Detect'),
+                      ),
                       const SizedBox(width: 5),
-                      _navButton('TDA'),
+                      ElevatedButton(
+                        onPressed: () {
+                          // Navigator.pushNamed(context, '/');
+                        },
+                        child: const Text('TDA'),
+                      ),
                       const SizedBox(width: 5),
-                      _navButton('TextOutput'),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/text_extract');
+                        },
+                        child: const Text('TextOutput'),
+                      ),
                     ],
                   ),
 
@@ -71,21 +86,6 @@ class TextExtractorScreen extends StatelessWidget {
 
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _navButton(String title) {
-    return ElevatedButton(
-      onPressed: () {},
-      style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.deepPurple[300],
-        shape: StadiumBorder(),
-        padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-      ),
-      child: Text(
-        title,
-        style: TextStyle(fontSize: 14, color: Colors.white),
       ),
     );
   }

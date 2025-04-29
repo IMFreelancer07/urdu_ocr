@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:urdu_ocr/activities/home_activity.dart';
+import 'package:urdu_ocr/activities/ocr_activity.dart';
 
 import 'activities/text_extraction_activity.dart';
 
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => HomeScreen(),
         '/ocr': (context) => TextExtractorScreen(),
+        '/text_extract': (context) => OcrScreen(),
       },
     );
   }
