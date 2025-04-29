@@ -58,6 +58,7 @@ flutter:
     - assets/sponsor3.jpg
     - assets/ai_brain_logo.png
     - assets/detected_text.png
+    - assets/processing.png
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
