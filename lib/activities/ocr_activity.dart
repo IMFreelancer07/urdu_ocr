@@ -85,9 +85,8 @@ class _OcrScreenState extends State<OcrScreen> {
         selectedItemColor: Colors.deepPurple,
         unselectedItemColor: Colors.black45,
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.label), label: 'Label'),
-          BottomNavigationBarItem(icon: Icon(Icons.label), label: 'Label'),
-          BottomNavigationBarItem(icon: Icon(Icons.label), label: 'Label'),
+          BottomNavigationBarItem(icon: Icon(Icons.label), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.label), label: 'CNIC OCR'),
         ],
       ),
     );

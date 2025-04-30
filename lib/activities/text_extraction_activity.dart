@@ -49,21 +49,15 @@ class TextExtractorScreen extends StatelessWidget {
                         onPressed: () {
                           Navigator.pushNamed(context, '/text_extract');
                         },
-                        child: Text('Text Detect'),
+                        child: Text('Text OCR'),
                       ),
+                      const SizedBox(width: 5),
                       const SizedBox(width: 5),
                       ElevatedButton(
                         onPressed: () {
-                          // Navigator.pushNamed(context, '/');
+                          Navigator.pushNamed(context, '/cnic_ocr');
                         },
-                        child: const Text('TDA'),
-                      ),
-                      const SizedBox(width: 5),
-                      ElevatedButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, '/text_extract');
-                        },
-                        child: const Text('TextOutput'),
+                        child: const Text('CNIC OCR'),
                       ),
                     ],
                   ),
