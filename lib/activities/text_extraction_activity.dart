@@ -44,6 +44,7 @@ class TextExtractorScreen extends StatelessWidget {
                     ),
                   ),
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       ElevatedButton(
                         onPressed: () {
