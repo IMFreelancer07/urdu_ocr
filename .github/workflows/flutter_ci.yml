@@ -54,14 +54,6 @@ jobs:
         run: |
           flutter analyze || echo "Analyzer found warnings, but workflow will continue."
 
-      # - name: Run Tests
-      #   run: |
-      #     if ls test/*.dart 1> /dev/null 2>&1; then
-      #       flutter test;
-      #     else
-      #       echo "No tests found, skipping test step.";
-      #     fi
-
       - name: Build APK (Debug)
         run: flutter build apk --debug
 
