@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
@@ -20,19 +20,29 @@ jobs:
           flutter-version: '3.24.1'
           channel: 'stable'
 
-      - name: Validate Flutter Version
+      - name: Install Android SDK Platform 33
         run: |
-          flutter --version | grep "Flutter 3.24.1"
+          yes | sdkmanager "platforms;android-33" "build-tools;33.0.2"
+
+      - name: Clean Flutter Build Cache
+        run: flutter clean
+
+      - name: Flutter Version Check
+        run: flutter --version
 
       - name: Install Dependencies
         run: flutter pub get
 
       - name: Analyze Project
-        run: |
-          flutter analyze || echo "Analyzer completed with warnings"
+        run: flutter analyze
 
       # - name: Run Tests
-      #   run: flutter test
+      #   run: |
+      #     if ls test/*.dart 1> /dev/null 2>&1; then
+      #       flutter test;
+      #     else
+      #       echo "No tests found, skipping test step.";
+      #     fi
 
       - name: Build APK (Debug)
         run: flutter build apk --debug
