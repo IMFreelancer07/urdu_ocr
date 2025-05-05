@@ -20,6 +20,19 @@ jobs:
           flutter-version: '3.24.1'
           channel: 'stable'
 
+      - name: Install Android SDK Command-Line Tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y curl unzip
+          curl -o commandlinetools-linux.zip https://dl.google.com/android/repository/commandlinetools-linux-9477386_latest.zip
+          sudo mkdir -p /usr/local/lib/android/sdk/cmdline-tools
+          sudo unzip commandlinetools-linux.zip -d /usr/local/lib/android/sdk/cmdline-tools
+          sudo mv /usr/local/lib/android/sdk/cmdline-tools/cmdline-tools /usr/local/lib/android/sdk/cmdline-tools/latest
+          sudo rm commandlinetools-linux.zip
+          echo "export ANDROID_HOME=/usr/local/lib/android/sdk" >> $GITHUB_ENV
+          echo "export PATH=\$ANDROID_HOME/cmdline-tools/latest/bin:\$ANDROID_HOME/platform-tools:\$PATH" >> $GITHUB_ENV
+          source $GITHUB_ENV
+
       - name: Install Android SDK Platform 33
         run: |
           yes | sdkmanager "platforms;android-33" "build-tools;33.0.2"
