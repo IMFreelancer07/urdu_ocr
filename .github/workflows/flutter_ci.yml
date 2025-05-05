@@ -31,10 +31,10 @@ jobs:
           echo "ANDROID_HOME=/usr/local/lib/android/sdk" >> $GITHUB_ENV
           echo "PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH" >> $GITHUB_ENV
 
-      - name: Install Android SDK Platform 33
+      - name: Install Android SDK Platform 35
         run: |
           source $GITHUB_ENV
-          yes | sdkmanager "platforms;android-33" "build-tools;33.0.2"
+          yes | sdkmanager "platforms;android-35" "build-tools;35.0.0"
 
       - name: Clean Flutter Build Cache
         run: flutter clean
