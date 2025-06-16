@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "com.aid.urdu_ocr"
-    compileSdk = 35
+    compileSdkVersion = 34
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
