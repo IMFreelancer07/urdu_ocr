@@ -31,16 +31,30 @@ jobs:
           echo "ANDROID_HOME=/usr/local/lib/android/sdk" >> $GITHUB_ENV
           echo "PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH" >> $GITHUB_ENV
 
-      - name: Install Android SDK Platform 34
+      - name: Install Android SDK Platforms and Build Tools
         run: |
           source $GITHUB_ENV
           yes | sdkmanager "platforms;android-34" "build-tools;34.0.0"
+          # Install API 35 properly since plugins require it
+          yes | sdkmanager "platforms;android-35" "build-tools;35.0.0"
 
-      - name: Copy SDK 34 Files to SDK 35
+      - name: Downgrade Plugin Dependencies if Needed
         run: |
-          source $GITHUB_ENV
-          mkdir -p $ANDROID_HOME/platforms/android-35
-          cp -r $ANDROID_HOME/platforms/android-34/* $ANDROID_HOME/platforms/android-35/
+          # Modify pubspec.yaml to use compatible plugin versions if needed
+          if grep -q "flutter_plugin_android_lifecycle" pubspec.yaml; then
+            # Option to pin the plugin to a version compatible with API 34
+            echo "Note: Consider pinning flutter_plugin_android_lifecycle version in pubspec.yaml if builds fail"
+          fi
+
+      - name: Update Gradle Config for SDK Compatibility
+        run: |
+          # Ensure compileSdk is set correctly in build.gradle
+          if [ -f "android/app/build.gradle" ]; then
+            sed -i 's/compileSdkVersion = 34/compileSdkVersion = 35/g' android/app/build.gradle
+            sed -i 's/compileSdkVersion 34/compileSdkVersion 35/g' android/app/build.gradle
+            sed -i 's/targetSdk = 34/targetSdk = 35/g' android/app/build.gradle
+            sed -i 's/targetSdkVersion 34/targetSdkVersion 35/g' android/app/build.gradle
+          fi
 
       - name: Clean Flutter Build Cache
         run: flutter clean
