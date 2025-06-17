@@ -15,14 +15,15 @@ class _CnicOcrScreenState extends State<CnicOcrScreen> {
 
   // Demo extracted CNIC data
   final Map<String, String> _extractedData = {
-    'Name (نام)': 'Feng Lin Cui (فینگ لِن کُوئی)',
-    'Father Name (ولدیت کا نام)': 'Hsi Ping Tsui (ہشی پنگ تسوئی)',
-    'Gender (جنس)': 'M (مذکر)',
-    'Country of Stay (مقامِ قیام)': 'China, Mainland (چین (مین لینڈ))',
-    'Identity Number (شناختی نمبر)': '90008-0100170-5 (۹۰۰۰۸-۰۱۰۰۱۷۰-۵)',
-    'Date of Birth (تاریخِ پیدائش)': '09.10.1972 (۰۹٫۱۰٫۱۹۷۲)',
-    'Date of Issue (تاریخِ اجرا)': '24.04.2017 (۲۴٫۰۴٫۲۰۱۷)',
-    'Date of Expiry (تاریخِ اختتام)': '24.04.2027 (۲۴٫۰۴٫۲۰۲۷)',
+    'Name ': 'Feng Lin Cui (فینگ لِن کُوئی)',
+    'Father Name ': 'Hsi Ping Tsui (ہشی پنگ تسوئی)',
+    'Gender ': 'M',
+    'Country of Stay ': 'China, Mainland',
+    'Identity Number ': '90008-0100170-5',
+    'Date of Birth ': '09.10.1972',
+    'Date of Issue ': '24.04.2017',
+    'Date of Expiry ': '24.04.2027',
+
   };
 
   Future<void> _pickImage() async {

@@ -8,11 +8,6 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: Text('Urdu OCR'),
-        actions: [
-          TextButton(onPressed: () {}, child: Text('Home', style: TextStyle(color: Colors.white))),
-          TextButton(onPressed: () {}, child: Text('Features', style: TextStyle(color: Colors.white))),
-          TextButton(onPressed: () {}, child: Text('OCR Demo', style: TextStyle(color: Colors.white))),
-        ],
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -59,13 +54,6 @@ class HomeScreen extends StatelessWidget {
                       Navigator.pushNamed(context, '/ocr');
                     },
                     child: Text('Try OCR'),
-                  ),
-                  const SizedBox(width: 20),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/features');
-                    },
-                    child: Text('See Features'),
                   ),
                 ],
               ),
