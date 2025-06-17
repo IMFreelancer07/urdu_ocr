@@ -13,6 +13,8 @@ class TextExtractorScreen extends StatelessWidget {
           children: [
             Expanded(
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   // Left Side Text
                   const Expanded(
@@ -20,7 +22,7 @@ class TextExtractorScreen extends StatelessWidget {
                     child: Padding(
                       padding: EdgeInsets.only(left: 20, top: 80),
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
                             'Extract text from images',
